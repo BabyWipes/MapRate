@@ -41,23 +41,23 @@ public class Commands {
             p = Bukkit.getPlayer(args.getString(0));
         }
         if (args.hasFlag('s')) {
-            Utility.addExempt(args.getString(0));
+            Utility.addExempt(args.getString(0).toLowerCase());
             sender.sendMessage(ChatColor.RED + "Player " + ChatColor.GREEN + args.getString(0) + ChatColor.RED + " is now exempt from rating!");
         } else if (args.hasFlag('u')) {
-            Utility.removeExempt(args.getString(0));
+            Utility.removeExempt(args.getString(0).toLowerCase());
             sender.sendMessage(ChatColor.RED + "Player " + ChatColor.GREEN + args.getString(0) + ChatColor.RED + " is now allowed to rate!");
         } else if (p != null) {
             sender.sendMessage(ChatColor.BOLD + "[MapRate] " + ChatColor.RESET + ChatColor.RED +
                     "Exemption status for " + p.getDisplayName());
-            sender.sendMessage(ChatColor.GREEN + "Is exempt: " + Utility.isExempt(p.getName()));
-            sender.sendMessage(ChatColor.GREEN + "Has admin rights: " + Arrays.asList(MapRate.getInstance().FULL_ACCESS).contains(p.getName()));
+            sender.sendMessage(ChatColor.GREEN + "Is exempt: " + Utility.isExempt(p.getName().toLowerCase()));
+            sender.sendMessage(ChatColor.GREEN + "Has admin rights: " + Arrays.asList(MapRate.getInstance().FULL_ACCESS).contains(p.getName().toLowerCase()));
             sender.sendMessage(ChatColor.RED + "Use the -s flag with this command to exempt a player from rating!");
             sender.sendMessage(ChatColor.RED + "Use the -u flag with this command to unexempt a player from rating!");
         } else {
             sender.sendMessage(ChatColor.BOLD + "[MapRate] " + ChatColor.RESET + ChatColor.RED +
                     "Exemption status for " + args.getString(0));
-            sender.sendMessage(ChatColor.GREEN + "Is exempt: " + Utility.isExempt(args.getString(0)));
-            sender.sendMessage(ChatColor.GREEN + "Has admin rights: " + Arrays.asList(MapRate.getInstance().FULL_ACCESS).contains(args.getString(0)));
+            sender.sendMessage(ChatColor.GREEN + "Is exempt: " + Utility.isExempt(args.getString(0).toLowerCase()));
+            sender.sendMessage(ChatColor.GREEN + "Has admin rights: " + Arrays.asList(MapRate.getInstance().FULL_ACCESS).contains(args.getString(0).toLowerCase()));
             sender.sendMessage(ChatColor.RED + "Use the -s flag with this command to exempt a player from rating!");
             sender.sendMessage(ChatColor.RED + "Use the -u flag with this command to unexempt a player from rating!");
         }

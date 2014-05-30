@@ -39,7 +39,7 @@ public class MapRate extends JavaPlugin {
         new BukkitRunnable() {
             public void run() {
                 try {
-                    config.save(new File("plugins/MapRate/config.yml"));
+                    getConfig().save(new File("plugins/MapRate/config.yml"));
                 } catch (IOException e) {
                     System.out.println("[MapRate] Error saving config: " + e.getMessage());
                 }
