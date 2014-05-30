@@ -1,13 +1,13 @@
 package com.oresomecraft.rate;
 
-import com.oresomecraft.OresomeBattles.api.BattlePlayer;
-import com.oresomecraft.OresomeBattles.api.BattlesAccess;
+import com.oresomecraft.OresomeBattles.api.*;
 import com.oresomecraft.maps.MapsPluginAPI;
 import com.sk89q.minecraft.util.commands.Command;
 import com.sk89q.minecraft.util.commands.CommandContext;
 import com.sk89q.minecraft.util.commands.CommandPermissions;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -100,7 +100,7 @@ public class Commands {
             sender.sendMessage(ChatColor.RED + "You cannot view a map's ratings if there is no battle playing!");
             return;
         }
-        if (!BattlePlayer.getBattlePlayer(sender.getName()).isSpectator() || BattlePlayer.getBattlePlayer(sender.getName()).getTeamType() == null) {
+        if (((Player) sender).getGameMode() != GameMode.CREATIVE) {
             sender.sendMessage(ChatColor.RED + "You must be in the lobby or spectating to view a map's ratings!");
             return;
         }
