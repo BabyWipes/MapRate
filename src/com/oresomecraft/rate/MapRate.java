@@ -36,6 +36,15 @@ public class MapRate extends JavaPlugin {
 
         plugin = this;
 
+        new BukkitRunnable() {
+            public void run() {
+                try {
+                    config.save(new File("plugins/MapRate/config.yml"));
+                } catch (IOException e) {
+                    System.out.println("[MapRate] Error saving config: " + e.getMessage());
+                }
+            }
+        }.runTaskTimer(this, 0L, 30 * 20L);
     }
 
     private void createConfig() {
@@ -50,18 +59,6 @@ public class MapRate extends JavaPlugin {
                 }
             }
         }
-    }
-
-    {
-        new BukkitRunnable() {
-            public void run() {
-                try {
-                    config.save(new File("plugins/MapRate/config.yml"));
-                } catch (IOException e) {
-                    System.out.println("[MapRate] Error saving config: " + e.getMessage());
-                }
-            }
-        }.runTaskTimer(this, 0L, 30 * 20L);
     }
 
     /**
